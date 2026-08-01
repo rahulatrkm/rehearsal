@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rehearsal — practise the interview before it counts</title>
+<meta name="description" content="A real mock interview that talks back. Answer out loud or by typing, get an honest score on every answer, face follow-up questions like a real interviewer, and finish with a full debrief. Free, nothing stored." />
+<meta name="theme-color" content="#0b1220" />
+<meta property="og:title" content="Rehearsal — practise the interview before it counts" />
+<meta property="og:description" content="A mock interview that probes weak answers, scores you honestly, and tells you if you'd pass. Free." />
+<meta property="og:type" content="website" />
+<style>
+  :root{ --bg:#0b1220; --bg2:#080e1a; --card:#131d33; --line:#26344f; --fg:#f2f6ff; --muted:#aab8d8;
+    --a1:#ffb86b; --a2:#ff8fa3; --good:#5ee3a0; --warn:#ffc06b; --bad:#ff8095; --focus:#ffd76b; }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif; color:var(--fg); line-height:1.6;
+    background:radial-gradient(1100px 560px at 85% -10%,#3a2440 0,transparent 60%),radial-gradient(900px 500px at 5% 0,#16223c 0,var(--bg) 55%); background-color:var(--bg); min-height:100vh}
+  a{color:var(--a1)}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--focus); outline-offset:2px}
+  .wrap{max-width:820px; margin:0 auto; padding:32px 18px 80px}
+  .kicker{display:inline-block; font-size:.73rem; letter-spacing:.09em; text-transform:uppercase; color:var(--a1);
+    border:1px solid var(--line); background:rgba(255,184,107,.1); padding:5px 12px; border-radius:999px}
+  h1{font-size:2.25rem; line-height:1.14; margin:.34em 0 .16em; letter-spacing:-.5px}
+  h1 .g{background:linear-gradient(90deg,var(--a1),var(--a2)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:var(--a1)}
+  .lead{color:var(--muted); font-size:1.05rem; max-width:640px}
+  .trust{display:flex; gap:15px; flex-wrap:wrap; margin-top:11px; color:var(--muted); font-size:.85rem}
+  .panel{background:linear-gradient(180deg,var(--card),var(--bg2)); border:1px solid var(--line); border-radius:16px; padding:20px; margin-top:20px}
+  label{font-size:.8rem; color:var(--muted); display:block; margin-bottom:6px; font-weight:600}
+  input,select,textarea{width:100%; background:#0a1020; color:var(--fg); border:1px solid var(--line); border-radius:11px; padding:11px 13px; font-size:.95rem; font-family:inherit}
+  input:focus,select:focus,textarea:focus{outline:none; border-color:var(--a1)}
+  textarea{min-height:150px; resize:vertical; line-height:1.55}
+  .row2{display:grid; grid-template-columns:1fr; gap:12px}
+  @media(min-width:660px){ .row2{grid-template-columns:1fr 1fr} }
+  .btn{border:0; cursor:pointer; font-weight:750; font-size:1rem; color:#0b1220;
+    background:linear-gradient(90deg,var(--a1),var(--a2)); padding:13px 24px; border-radius:12px}
+  .btn:disabled{opacity:.5; cursor:not-allowed}
+  .btn.ghost{background:transparent; border:1px solid var(--line); color:var(--fg); font-weight:600}
+  .btn.mic{background:transparent; border:1px solid var(--line); color:var(--fg); font-weight:600}
+  .btn.mic.rec{background:rgba(255,128,149,.16); border-color:var(--bad); color:#ffd7de}
+  .bar{display:flex; gap:9px; flex-wrap:wrap; margin-top:12px; align-items:center}
+  .hint{color:var(--muted); font-size:.84rem; margin-top:9px}
+  .prog{display:flex; align-items:center; gap:10px; color:var(--muted); font-size:.85rem; margin-bottom:12px}
+  .prog .dots{display:flex; gap:5px}
+  .prog .dot{width:9px; height:9px; border-radius:50%; background:#26344f}
+  .prog .dot.on{background:var(--a1)}
+  .qcard{border-left:4px solid var(--a1); background:#0e1830; border:1px solid var(--line); border-radius:12px; padding:15px 17px}
+  .qcard .who{font-size:.74rem; text-transform:uppercase; letter-spacing:.07em; color:var(--muted)}
+  .qcard .q{font-size:1.16rem; font-weight:650; margin-top:3px}
+  .qcard .intent{color:var(--muted); font-size:.85rem; margin-top:7px; font-style:italic}
+  .fb{border:1px solid var(--line); border-radius:12px; padding:15px 17px; margin-top:14px; background:#0e1830}
+  .fb .top{display:flex; align-items:center; gap:13px; flex-wrap:wrap}
+  .scoreBadge{font-size:1.5rem; font-weight:800; padding:6px 14px; border-radius:12px}
+  .sec{margin:14px 0 6px; font-size:.95rem; font-weight:700}
+  ul.plain{list-style:none; padding:0; margin:0}
+  ul.plain li{padding:8px 11px; border:1px solid var(--line); border-radius:9px; margin:6px 0; background:#0c1526; font-size:.93rem}
+  ul.good li::before{content:"✓ "; color:var(--good)}
+  ul.bad li::before{content:"→ "; color:var(--warn)}
+  .model{background:rgba(94,227,160,.08); border:1px solid rgba(94,227,160,.28); border-radius:11px; padding:12px 14px; font-size:.94rem}
+  .ring{--v:0; width:118px; height:118px; border-radius:50%; flex:0 0 auto; position:relative; background:conic-gradient(var(--sc) calc(var(--v)*1%), #1c2740 0)}
+  .ring::after{content:""; position:absolute; inset:11px; background:var(--card); border-radius:50%}
+  .ring b{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:1.85rem; font-weight:800; z-index:2}
+  .loading{display:flex; gap:12px; align-items:center; color:var(--muted)}
+  .spin{width:20px; height:20px; border:3px solid var(--line); border-top-color:var(--a1); border-radius:50%; animation:sp 1s linear infinite}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  .err{background:rgba(255,128,149,.1); border:1px solid rgba(255,128,149,.35); color:#ffd7de; padding:12px 14px; border-radius:12px}
+  .hidden{display:none}
+  footer{margin-top:34px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--line); padding-top:16px}
+  .visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  @media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="kicker">Free · nothing stored · answer out loud</p>
+  <h1>Practise the interview <span class="g">before it counts</span></h1>
+  <p class="lead">A mock interview that actually behaves like one: it asks, listens, scores you honestly, and <strong>digs into weak answers instead of moving politely on</strong>. Answer by speaking or typing.</p>
+  <div class="trust"><span>🎙️ Speak your answers</span><span>📊 Scored every turn</span><span>🔒 Nothing saved</span></div>
+
+  <main>
+  <!-- setup -->
+  <section class="panel" id="setup">
+    <div class="row2">
+      <div>
+        <label for="role">What role are you interviewing for?</label>
+        <input id="role" placeholder="e.g. Senior Backend Engineer, Product Manager, Nurse" />
+      </div>
+      <div>
+        <label for="level">Seniority</label>
+        <select id="level">
+          <option value="entry">Entry / graduate</option>
+          <option value="mid" selected>Mid-level</option>
+          <option value="senior">Senior</option>
+          <option value="lead">Lead / manager</option>
+        </select>
+      </div>
+    </div>
+    <div class="row2" style="margin-top:12px">
+      <div>
+        <label for="style">Interview type</label>
+        <select id="style">
+          <option value="behavioral">Behavioural (stories about you)</option>
+          <option value="mixed" selected>Mixed</option>
+          <option value="technical">Technical / role knowledge</option>
+          <option value="tough">Tough — pressure interview</option>
+        </select>
+      </div>
+      <div>
+        <label for="qcount">How many questions?</label>
+        <select id="qcount"><option>3</option><option selected>5</option><option>7</option></select>
+      </div>
+    </div>
+    <div class="bar"><button class="btn" id="start">Start the interview →</button></div>
+    <p class="hint">First question takes ~30s while the free server wakes up. Nothing you say is stored.</p>
+  </section>
+
+  <!-- interview -->
+  <section id="stage" class="hidden">
+    <div class="prog"><span id="progText">Question 1</span><span class="dots" id="dots"></span></div>
+    <div class="panel">
+      <div class="qcard">
+        <div class="who">Interviewer</div>
+        <div class="q" id="qText"></div>
+        <div class="intent" id="qIntent"></div>
+      </div>
+      <div style="margin-top:14px">
+        <label for="ans">Your answer</label>
+        <textarea id="ans" placeholder="Speak it out loud with the mic, or type here…"></textarea>
+      </div>
+      <div class="bar">
+        <button class="btn" id="send">Submit answer →</button>
+        <button class="btn mic" id="mic">🎙️ Speak</button>
+        <button class="btn ghost" id="finish">Finish &amp; get debrief</button>
+        <span class="hint" id="micNote" style="margin:0"></span>
+      </div>
+    </div>
+    <div id="fbArea"></div>
+  </section>
+
+  <div id="out"></div>
+  </main>
+
+  <footer><b>Rehearsal</b> — free practice interviews. An AI interviewer to sharpen your answers, not a hiring decision. · <a href="https://rahulatrkm.github.io/portfolio/">More free tools</a></footer>
+</div>
+
+<script>
+"use strict";
+const API="https://plainly-n6ni.onrender.com";
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?"":s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const li=(a,cls)=> (!a||!a.length)?"":`<ul class="plain ${cls}">${a.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`;
+const col=n=>n>=70?"var(--good)":n>=45?"var(--warn)":"var(--bad)";
+
+let S={role:"",level:"",style:"",total:5,history:[],currentQ:"",asked:0};
+
+function dots(){
+  $("#dots").innerHTML=Array.from({length:S.total},(_,i)=>`<span class="dot ${i<S.asked?"on":""}"></span>`).join("");
+  $("#progText").textContent=`Question ${Math.min(S.asked+1,S.total)} of ${S.total}`;
+}
+function busy(msg){ $("#out").innerHTML=`<div class="panel"><div class="loading"><div class="spin"></div><b>${esc(msg)}</b></div></div>`; }
+function clearBusy(){ $("#out").innerHTML=""; }
+function fail(msg,retry){
+  $("#out").innerHTML=`<div class="panel"><div class="err">${esc(msg)}</div><div class="bar"><button class="btn ghost" id="rt">Try again</button></div></div>`;
+  $("#rt").addEventListener("click",retry);
+}
+async function post(path,body){
+  const r=await fetch(API+path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+  const d=await r.json(); if(!r.ok) throw new Error(d.error||"Something went wrong."); return d;
+}
+
+async function start(){
+  const role=$("#role").value.trim();
+  if(!role){ $("#role").focus(); fail("Tell me the role you're interviewing for.",()=>clearBusy()); return; }
+  S={role, level:$("#level").value, style:$("#style").value, total:+$("#qcount").value, history:[], currentQ:"", asked:0};
+  $("#start").disabled=true; busy("Your interviewer is getting ready…");
+  try{
+    const d=await post("/api/interview",{role:S.role,level:S.level,style:S.style,history:[]});
+    S.currentQ=d.question||""; S.asked=0;
+    $("#setup").classList.add("hidden"); $("#stage").classList.remove("hidden");
+    showQuestion(d); clearBusy();
+  }catch(e){ fail(e.message,start); }finally{ $("#start").disabled=false; }
+}
+
+function showQuestion(d){
+  $("#qText").textContent=d.question||"";
+  $("#qIntent").textContent=d.question_intent?`What they're really testing: ${d.question_intent}`:"";
+  $("#ans").value=""; dots(); $("#ans").focus();
+  $("#stage").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function renderFeedback(f){
+  if(!f) return;
+  const s=Math.max(0,Math.min(10,Math.round(f.score??0)));
+  $("#fbArea").innerHTML=`<div class="panel"><div class="fb">
+    <div class="top"><span class="scoreBadge" style="background:${col(s*10)}22;color:${col(s*10)}">${s}/10</span>
+      <div style="flex:1;min-width:220px"><b>${esc(f.verdict||"")}</b></div></div>
+    ${f.did_well?.length?`<div class="sec">What worked</div>${li(f.did_well,"good")}`:""}
+    ${f.improve?.length?`<div class="sec">What to fix</div>${li(f.improve,"bad")}`:""}
+    ${f.model_answer?`<div class="sec">A stronger version of your answer</div><div class="model">${esc(f.model_answer)}</div>`:""}
+  </div></div>`;
+}
+
+async function send(){
+  const a=$("#ans").value.trim();
+  if(a.length<15){ $("#ans").focus(); fail("Give a fuller answer — that's too short to grade.",clearBusy); return; }
+  stopMic();
+  S.history.push({q:S.currentQ,a}); S.asked++;
+  $("#send").disabled=true; busy("Your interviewer is considering your answer…");
+  try{
+    if(S.asked>=S.total){ await debrief(); return; }
+    const d=await post("/api/interview",{role:S.role,level:S.level,style:S.style,history:S.history});
+    renderFeedback(d.feedback); S.currentQ=d.question||""; showQuestion(d); clearBusy();
+  }catch(e){ S.history.pop(); S.asked--; fail(e.message,send); }
+  finally{ $("#send").disabled=false; }
+}
+
+async function debrief(){
+  if(!S.history.length){ fail("Answer at least one question first.",clearBusy); return; }
+  busy("Writing your full debrief…");
+  try{
+    const d=await post("/api/debrief",{role:S.role,level:S.level,history:S.history});
+    const s=Math.max(0,Math.min(100,Math.round(d.overall_score??0)));
+    $("#stage").classList.add("hidden");
+    $("#out").innerHTML=`<div class="panel">
+      <div style="display:flex;gap:22px;align-items:center;flex-wrap:wrap">
+        <div class="ring" style="--v:${s};--sc:${col(s)}"><b>${s}</b></div>
+        <div style="flex:1;min-width:240px"><h2 style="font-size:1.25rem">Interview debrief</h2>
+          <p style="color:var(--muted)">${esc(d.verdict||"")}</p></div>
+      </div>
+      ${d.strengths?.length?`<div class="sec">Strengths</div>${li(d.strengths,"good")}`:""}
+      ${d.weaknesses?.length?`<div class="sec">Weaknesses</div>${li(d.weaknesses,"bad")}`:""}
+      ${d.patterns?.length?`<div class="sec">Habits across your answers</div>${li(d.patterns,"bad")}`:""}
+      ${d.practice_next?.length?`<div class="sec">Drill these before the real thing</div>${li(d.practice_next,"bad")}`:""}
+      ${d.likely_next_questions?.length?`<div class="sec">Prepare for these questions</div>${li(d.likely_next_questions,"bad")}`:""}
+      <div class="bar"><button class="btn" id="again">Practise again</button><button class="btn ghost" id="copy">Copy debrief</button></div>
+    </div>`;
+    $("#again").addEventListener("click",()=>{ $("#out").innerHTML=""; $("#fbArea").innerHTML=""; $("#setup").classList.remove("hidden"); window.scrollTo({top:0,behavior:"smooth"}); });
+    $("#copy").addEventListener("click",()=>{
+      const L=[`Rehearsal — ${S.role} (${s}/100)`,d.verdict||"",""];
+      (d.weaknesses||[]).forEach(x=>L.push("Weakness: "+x));
+      (d.practice_next||[]).forEach(x=>L.push("Practise: "+x));
+      (d.likely_next_questions||[]).forEach(x=>L.push("Prepare: "+x));
+      navigator.clipboard.writeText(L.join("\n")).then(()=>{$("#copy").textContent="Copied ✓";setTimeout(()=>$("#copy").textContent="Copy debrief",1500);});
+    });
+    $("#out").scrollIntoView({behavior:"smooth",block:"start"});
+  }catch(e){ fail(e.message,debrief); }
+}
+
+/* ---- speech to text: practising out loud is the point ---- */
+let rec=null, recording=false;
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+if(!SR){ $("#mic").disabled=true; $("#micNote").textContent="Voice input needs Chrome or Edge — typing works everywhere."; }
+function stopMic(){ if(rec&&recording){ try{rec.stop();}catch(e){} } recording=false; $("#mic").classList.remove("rec"); $("#mic").textContent="🎙️ Speak"; }
+$("#mic").addEventListener("click",()=>{
+  if(!SR) return;
+  if(recording){ stopMic(); return; }
+  rec=new SR(); rec.continuous=true; rec.interimResults=true; rec.lang="en-US";
+  let base=$("#ans").value ? $("#ans").value.trim()+" " : "";
+  rec.onresult=e=>{
+    let finalTxt="",interim="";
+    for(let i=e.resultIndex;i<e.results.length;i++){
+      const t=e.results[i][0].transcript;
+      if(e.results[i].isFinal) finalTxt+=t+" "; else interim+=t;
+    }
+    if(finalTxt) base+=finalTxt;
+    $("#ans").value=(base+interim).replace(/\s+/g," ");
+  };
+  rec.onerror=()=>{ $("#micNote").textContent="Mic unavailable — please type your answer."; stopMic(); };
+  rec.onend=()=>{ if(recording){ try{rec.start();}catch(e){ stopMic(); } } };
+  try{ rec.start(); recording=true; $("#mic").classList.add("rec"); $("#mic").textContent="⏹ Stop"; $("#micNote").textContent="Listening — speak naturally."; }
+  catch(e){ $("#micNote").textContent="Couldn't start the mic."; }
+});
+
+$("#start").addEventListener("click",start);
+$("#send").addEventListener("click",send);
+$("#finish").addEventListener("click",()=>{ stopMic(); debrief(); });
+$("#role").addEventListener("keydown",e=>{ if(e.key==="Enter") start(); });
+</script>
+</body>
+</html>
